@@ -1,0 +1,19 @@
+﻿@model Notepad.Models.Entity.TBLPERSONAL
+@{
+    ViewBag.Title = "AddPersonal";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+    <form class="form-group" action="/Personal/AddPersonal" method="post">
+
+        <div>
+            <label>Имя</label>
+            <input type="text" class="form-control" name="Name" />
+            <label>Фамилия</label>
+            <input type="text" class="form-control" name="Surname" />
+        </div>
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="Btn1">Добавить</button>
+        </div>
+    </form>
+

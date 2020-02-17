@@ -1,0 +1,26 @@
+﻿@model Notepad.Models.Entity.TBLPERSONAL
+@{
+    ViewBag.Title = "GetPersonal";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdatePersonal", "Personal", FormMethod.Post))
+{
+    <div style="margin-top:25px" class="form-group">
+        @*@Html.LabelFor(k => k.Id)*@
+        Personal ID
+        @Html.TextBoxFor(k => k.Id, new { @class = "form-control" })
+
+        <br />
+        @*@Html.LabelFor(k => k.Ad)*@
+        Имя
+        @Html.TextBoxFor(k => k.Name, new { @class = "form-control" })
+        <br />
+        Фамилия
+        @Html.TextBoxFor(k => k.Surname, new { @class = "form-control" })
+        <div>
+            <button style="margin-top:10px" class="btn btn-warning">Редактировать</button>
+        </div>
+    </div>
+}
+
