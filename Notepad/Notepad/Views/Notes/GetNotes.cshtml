@@ -1,0 +1,29 @@
+﻿@model Notepad.Models.Entity.TBLCONTENT
+@{
+    ViewBag.Title = "GetNotes";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateNotes", "Notes", FormMethod.Post))
+{
+    <div style="margin-top:25px" class="form-group">
+        @*@Html.LabelFor(k => k.Id)*@
+        Номер Записки
+        @Html.TextBoxFor(k => k.Id, new { @class = "form-control" })
+
+        <br />
+        @*@Html.LabelFor(k => k.Ad)*@
+        Тема
+        @Html.TextBoxFor(k => k.Theme, new { @class = "form-control" })
+        <br />
+        Детали
+        @Html.TextBoxFor(k => k.Details, new { @class = "form-control" })
+
+        Создатель
+        @Html.DropDownListFor(b => b.TBLPERSONAL.Id, (List<SelectListItem>)ViewBag.val2, new { @class = "form-control" })
+        <div>
+            <button style="margin-top:10px" class="btn btn-warning">Редактировать</button>
+        </div>
+    </div>
+}
+

@@ -16,7 +16,7 @@ namespace Notepad.Models.Entity
     {
         public byte Id { get; set; }
         public string Theme { get; set; }
-        public string Detail { get; set; }
+        public string Details { get; set; }
         public Nullable<byte> Personal { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     

@@ -11,7 +11,7 @@ namespace Notepad.Controllers
     {
         // GET: Personal
 
-        DBNOTEPADEntities db = new DBNOTEPADEntities();
+        DBNOTEPADEntities1 db = new DBNOTEPADEntities1();
         public ActionResult Index()
         {
             var values = db.TBLPERSONAL.ToList();
@@ -28,6 +28,11 @@ namespace Notepad.Controllers
         [HttpPost]
         public ActionResult AddPersonal(TBLPERSONAL prs)
         {
+            if (!ModelState.IsValid)  //Eğer required şartı sağlanmazsa Personel ekleme sayfasına geri döndürüleceğiz
+            {
+                return View();
+            }
+
             db.TBLPERSONAL.Add(prs);
             db.SaveChanges();
             return RedirectToAction("Index");

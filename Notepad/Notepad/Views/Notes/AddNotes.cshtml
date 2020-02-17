@@ -1,0 +1,28 @@
+﻿@model Notepad.Models.Entity.TBLCONTENT
+@{
+    ViewBag.Title = "AddNotes";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+    <div class="col-md-6">
+        <form class="form-group " action="/Notes/AddNotes" method="post">
+
+            <div>
+                <label>Тема</label>
+                @Html.TextBoxFor(b => b.Theme, new { @class = "form-control", @maxlength="100" })
+               
+
+                <label>Детали</label>
+                @Html.TextAreaFor(b => b.Details, new { @class = "form-control",@maxlength="550" })
+                
+
+                <label>Создатель</label>
+                @Html.DropDownListFor(b => b.TBLPERSONAL.Id, (List<SelectListItem>)ViewBag.val2, new { @class = "form-control" })
+                <label>Дата</label>
+                <input type="text" class="form-control" name="Date" value="@DateTime.Now.ToShortDateString()" readonly />
+            </div>
+            <div style="margin-top:15px">
+                <button class="btn btn-primary" id="Btn1">Добавить</button>
+            </div>
+        </form>
+    </div>

@@ -13,10 +13,10 @@ namespace Notepad.Models.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBNOTEPADEntities : DbContext
+    public partial class DBNOTEPADEntities1 : DbContext
     {
-        public DBNOTEPADEntities()
-            : base("name=DBNOTEPADEntities")
+        public DBNOTEPADEntities1()
+            : base("name=DBNOTEPADEntities1")
         {
         }
     

@@ -1,0 +1,38 @@
+﻿@using Notepad.Models.Entity
+@model List<TBLCONTENT>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<table class="table table-bordered table-hover ">
+    <thead>
+        <tr>
+            <th>и. номер</th>
+            <th>Тема</th>
+            <th>Детали</th>
+            <th>Дата</th>
+            <th>Создатель</th>
+            <th>Удалить</th>
+            <th>Редактировать</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+        <tr>
+            <td>@p.Id</td>
+            <td style="width:200px;">@p.Theme</td>
+            <td style="text-align:justify;">@p.Details</td>
+            <td style="text-align:justify;">@Convert.ToDateTime(p.Date).ToString("dd/MMM/yyyy")</td>
+            <td style="width:100px;">@p.TBLPERSONAL.Name @p.TBLPERSONAL.Surname</td>
+            <td >@Html.ActionLink("Удалить", "DeleteNotes", new { id = p.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Вы хотите удалить это?')" })</td>
+
+            <td><a href="/Notes/GetNotes/@p.Id" class="btn btn-success">Редактировать</a></td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>
+<a href="/Notes/AddNotes" class="btn btn-primary"> Добавить</a>

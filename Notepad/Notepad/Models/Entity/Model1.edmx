@@ -20,8 +20,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Theme" Type="varchar" MaxLength="100" />
-          <Property Name="Detail" Type="varchar" MaxLength="250" />
+          <Property Name="Theme" Type="nvarchar" MaxLength="100" />
+          <Property Name="Details" Type="nvarchar" MaxLength="550" />
           <Property Name="Personal" Type="tinyint" />
           <Property Name="Date" Type="smalldatetime" />
         </EntityType>
@@ -33,10 +33,26 @@
           <Property Name="Name" Type="nvarchar" MaxLength="20" />
           <Property Name="Surname" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <Association Name="FK_TBLCONTENT_TBLPERSONAL">
+          <End Role="TBLPERSONAL" Type="Self.TBLPERSONAL" Multiplicity="0..1" />
+          <End Role="TBLCONTENT" Type="Self.TBLCONTENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLPERSONAL">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLCONTENT">
+              <PropertyRef Name="Personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBNOTEPADModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLCONTENT" EntityType="Self.TBLCONTENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLPERSONAL" EntityType="Self.TBLPERSONAL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLCONTENT_TBLPERSONAL" Association="Self.FK_TBLCONTENT_TBLPERSONAL">
+            <End Role="TBLPERSONAL" EntitySet="TBLPERSONAL" />
+            <End Role="TBLCONTENT" EntitySet="TBLCONTENT" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -57,8 +73,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Theme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Detail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Theme" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
           <Property Name="Personal" Type="Byte" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TBLPERSONAL" Relationship="Self.FK_TBLCONTENT_TBLPERSONAL" FromRole="TBLCONTENT" ToRole="TBLPERSONAL" />
@@ -67,7 +83,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Byte" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TBLCONTENT" Relationship="Self.FK_TBLCONTENT_TBLPERSONAL" FromRole="TBLPERSONAL" ToRole="TBLCONTENT" />
@@ -84,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBNOTEPADEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBNOTEPADEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBLCONTENT" EntityType="Self.TBLCONTENT" />
           <EntitySet Name="TBLPERSONAL" EntityType="Self.TBLPERSONAL" />
@@ -98,7 +114,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBNOTEPADModelStoreContainer" CdmEntityContainer="DBNOTEPADEntities">
+        <EntityContainerMapping StorageEntityContainer="DBNOTEPADModelStoreContainer" CdmEntityContainer="DBNOTEPADEntities1">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DBNOTEPADModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -115,7 +131,7 @@
               <MappingFragment StoreEntitySet="TBLCONTENT">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Theme" ColumnName="Theme" />
-                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="Personal" ColumnName="Personal" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
