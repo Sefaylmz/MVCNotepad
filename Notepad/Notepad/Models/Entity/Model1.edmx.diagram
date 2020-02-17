@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aa219a35889b4ca0baa1b28abf0cf348" Name="Diagram1">
+      <Diagram DiagramId="f489cb60224a4b108712745e9109bcb3" Name="Diagram1">
         <EntityTypeShape EntityType="DBNOTEPADModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBNOTEPADModel.TBLCONTENT" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNOTEPADModel.TBLCONTENT" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBNOTEPADModel.TBLPERSONAL" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="DBNOTEPADModel.FK_TBLCONTENT_TBLPERSONAL" ManuallyRouted="false" />
       </Diagram>

@@ -20,16 +20,16 @@
     <tbody>
         @foreach (var p in Model)
         {
-        <tr>
-            <td>@p.Id</td>
-            <td style="width:200px;">@p.Theme</td>
-            <td style="text-align:justify;">@p.Details</td>
-            <td style="text-align:justify;">@Convert.ToDateTime(p.Date).ToString("dd/MMM/yyyy")</td>
-            <td style="width:100px;">@p.TBLPERSONAL.Name @p.TBLPERSONAL.Surname</td>
-            <td >@Html.ActionLink("Удалить", "DeleteNotes", new { id = p.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Вы хотите удалить это?')" })</td>
+            <tr>
+                <td>@p.Id</td>
+                <td style="width:200px;">@p.Theme</td>
+                <td style="text-align:justify;">@p.Details</td>
+                <td style="text-align:justify;">@Convert.ToDateTime(p.Date).ToString("dd/MMM/yyyy")</td>
+                <td>@p.TBLPERSONAL.Name @p.TBLPERSONAL.Surname</td>
+                <td>@Html.ActionLink("Удалить", "DeleteNotes", new { id = p.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Вы хотите удалить это?')" })</td>
 
-            <td><a href="/Notes/GetNotes/@p.Id" class="btn btn-success">Редактировать</a></td>
-        </tr>
+                <td><a href="/Notes/GetNotes/@p.Id" class="btn btn-success">Редактировать</a></td>
+            </tr>
         }
 
 

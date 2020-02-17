@@ -17,7 +17,7 @@
                 
 
                 <label>Создатель</label>
-                @Html.DropDownListFor(b => b.TBLPERSONAL.Id, (List<SelectListItem>)ViewBag.val2, new { @class = "form-control" })
+                @Html.DropDownListFor(b => b.TBLPERSONAL.Id, (List<SelectListItem>)ViewBag.val1, new { @class = "form-control" })
                 <label>Дата</label>
                 <input type="text" class="form-control" name="Date" value="@DateTime.Now.ToShortDateString()" readonly />
             </div>

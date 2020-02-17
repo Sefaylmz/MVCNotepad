@@ -9,7 +9,7 @@ namespace Notepad.Controllers
     public class NotesController : Controller
     {
         // GET: Notes
-        DBNOTEPADEntities1 db = new DBNOTEPADEntities1();
+        DBNOTEPADEntities2 db = new DBNOTEPADEntities2();
         public ActionResult Index()
         {
             var values = db.TBLCONTENT.ToList();
@@ -20,14 +20,14 @@ namespace Notepad.Controllers
         [HttpGet]
         public ActionResult AddNotes()
         {
-            List<SelectListItem> valueAuthors = (from i in db.TBLPERSONAL.ToList()
+            List<SelectListItem> values = (from i in db.TBLPERSONAL.ToList()
                     select new SelectListItem
                     {
                         Text = i.Name + ' ' + i.Surname,
 
                         Value = i.Id.ToString()
                     }).ToList();
-            ViewBag.val2 = valueAuthors;
+            ViewBag.val1 = values;
             return View();
         }
 
@@ -53,15 +53,24 @@ namespace Notepad.Controllers
         //GET & UPDATE
         public ActionResult GetNotes(int id)
         {
-            var values = db.TBLPERSONAL.Find(id);
-            return View("GetPersonal", values);
+            List<SelectListItem> valuesN = (from i in db.TBLPERSONAL.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = i.Name + ' ' + i.Surname,
+
+                                               Value = i.Id.ToString()
+                                           }).ToList();
+            ViewBag.val1 = valuesN;
+            var values = db.TBLCONTENT.Find(id);
+            return View("GetNotes", values);
         }
         public ActionResult UpdateNotes(TBLCONTENT p)
         {
             var values = db.TBLCONTENT.Find(p.Id);
             values.Theme = p.Theme;
             values.Details = p.Details;
-            values.Personal = p.Personal;
+            var ct = db.TBLPERSONAL.Where(c => c.Id == p.TBLPERSONAL.Id).FirstOrDefault();
+            values.Personal = ct.Id;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

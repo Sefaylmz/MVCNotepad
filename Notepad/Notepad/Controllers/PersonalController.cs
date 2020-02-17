@@ -11,7 +11,7 @@ namespace Notepad.Controllers
     {
         // GET: Personal
 
-        DBNOTEPADEntities1 db = new DBNOTEPADEntities1();
+        DBNOTEPADEntities2 db = new DBNOTEPADEntities2();
         public ActionResult Index()
         {
             var values = db.TBLPERSONAL.ToList();

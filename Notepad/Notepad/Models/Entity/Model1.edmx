@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBNOTEPADModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBNOTEPADModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -54,7 +54,8 @@
             <End Role="TBLCONTENT" EntitySet="TBLCONTENT" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBNOTEPADModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -83,7 +84,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TBLCONTENT" Relationship="Self.FK_TBLCONTENT_TBLPERSONAL" FromRole="TBLPERSONAL" ToRole="TBLCONTENT" />
@@ -100,7 +101,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBNOTEPADEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBNOTEPADEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBLCONTENT" EntityType="Self.TBLCONTENT" />
           <EntitySet Name="TBLPERSONAL" EntityType="Self.TBLPERSONAL" />
@@ -114,7 +115,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBNOTEPADModelStoreContainer" CdmEntityContainer="DBNOTEPADEntities1">
+        <EntityContainerMapping StorageEntityContainer="DBNOTEPADModelStoreContainer" CdmEntityContainer="DBNOTEPADEntities2">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DBNOTEPADModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">

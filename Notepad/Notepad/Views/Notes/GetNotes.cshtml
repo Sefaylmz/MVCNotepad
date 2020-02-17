@@ -9,7 +9,7 @@
     <div style="margin-top:25px" class="form-group">
         @*@Html.LabelFor(k => k.Id)*@
         Номер Записки
-        @Html.TextBoxFor(k => k.Id, new { @class = "form-control" })
+        @Html.TextBoxFor(k => k.Id, new { @class = "form-control",@readonly="true" })
 
         <br />
         @*@Html.LabelFor(k => k.Ad)*@
@@ -20,7 +20,7 @@
         @Html.TextBoxFor(k => k.Details, new { @class = "form-control" })
 
         Создатель
-        @Html.DropDownListFor(b => b.TBLPERSONAL.Id, (List<SelectListItem>)ViewBag.val2, new { @class = "form-control" })
+        @Html.DropDownListFor(b => b.TBLPERSONAL.Id, (List<SelectListItem>)ViewBag.val1, new { @class = "form-control" })
         <div>
             <button style="margin-top:10px" class="btn btn-warning">Редактировать</button>
         </div>
